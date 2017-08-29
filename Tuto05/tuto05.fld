@@ -1,6 +1,66 @@
- # data file for the Fltk User Interface Designer (fluid)
+# data file for the Fltk User Interface Designer (fluid)
 version 1.0302 
 header_name {.h} 
 code_name {.cxx}
-decl {\#include "header.c"} {selected private local
+decl {\#include "header.c"} {private local
+} 
+
+decl {\#include "func.c"} {private local
+} 
+
+Function {make_window()} {open
+} {
+  Fl_Window {} {open
+    xywh {95 184 655 265} type Double resizable visible
+  } {
+    Fl_Button button01 {
+      label {Set Inputbox Label}
+      callback {printf( "Button01 CLICKED \\n" );
+
+ input01->label("Label Changed!");}
+      xywh {105 25 155 40}
+    }
+    Fl_Input input01 {
+      label {input line}
+      tooltip {Tooltip Input Text} xywh {190 196 95 34}
+    }
+    Fl_Button button02 {
+      label {Set inputbox Text}
+      callback {printf( "Button02 CLICKED \\n" );
+
+ input01->value("Text Changed!");}
+      xywh {270 25 165 40}
+    }
+    Fl_Button button03 {
+      label {Verify Content}
+      callback {if ( strcmp( input01->value() , "" ) != 0 )
+   {
+      printf( "Value Item is not null\\n" );
+      printf( "Value Item: %s\\n" , input01->value() );
+   }
+   else 
+   printf( "Value Item is null\\n" );
+
+   
+      
+      //char strpassed[PATH_MAX];
+      //strncpy( strpassed, iw->value() , PATH_MAX );}
+      xywh {105 75 155 40}
+    }
+    Fl_Button button04 {
+      label {Clear inputbox Text}
+      callback {printf( "Clear inputbox text \\n" );
+
+ input01->value( "" );}
+      xywh {270 75 165 40} resizable
+    }
+  }
+  code {w->show();} {}
+} 
+
+Function {main()} {open return_type int
+} {
+  code {printf("Hello, World!\\n");
+ make_window(); Fl::run();
+  return 0;} {}
 } 
