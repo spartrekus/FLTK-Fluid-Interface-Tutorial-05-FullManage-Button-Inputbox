@@ -1,0 +1,6 @@
+ # data file for the Fltk User Interface Designer (fluid)
+version 1.0302 
+header_name {.h} 
+code_name {.cxx}
+decl {\#include "header.c"} {selected private local
+} 
